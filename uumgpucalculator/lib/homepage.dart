@@ -118,7 +118,20 @@ class _GPAHomeState extends State<GPAHome> {
                 ),
                 child: const Text('Calculate GPA'),
               ),
-              
+
+              const Divider(height: 60, thickness: 2),
+
+              // OUTPUT
+              Text(
+                "Overall GPA: ${totalGPA.toStringAsFixed(2)}",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.teal[900]),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Status: $status",
+                style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+              ),
+
             ]
           )
         )
