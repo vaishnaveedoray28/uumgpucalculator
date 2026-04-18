@@ -25,6 +25,34 @@ class _GPAHomeState extends State<GPAHome> {
       creditControllers.add(TextEditingController());
     });
   }
+
+  void calculateTotalGPA() {
+    double totalPoints = 0.0;
+    double totalCredits = 0.0;
+
+    for (int i = 0; i < gradeControllers.length; i++) {
+      double g = double.tryParse(gradeControllers[i].text) ?? 0.0;
+      double c = double.tryParse(creditControllers[i].text) ?? 0.0;
+      totalPoints += (g * c);
+      totalCredits += c;
+    }
+
+    setState(() {
+      if (totalCredits > 0) {
+        totalGPA = totalPoints / totalCredits;
+        if (totalGPA >= 3.75) {
+          status = "Excellent (Dean's List)";
+        } else if (totalGPA >= 2.0) {
+          status = "Good Standing";
+        } else {
+          status = "Needs Improvement";
+        }
+      } else {
+        totalGPA = 0.0;
+        status = "Please enter valid credits";
+      }
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
