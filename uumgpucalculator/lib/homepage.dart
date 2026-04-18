@@ -65,6 +65,26 @@ class _GPAHomeState extends State<GPAHome> {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
       ),
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+
+              Text(
+                "Dynamic Performance Tracker",
+                style: GoogleFonts.robotoSlab(
+                  fontSize: 22, 
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black, 
+                ),
+              ),
+            ]
+          )
+        )
+      )
     );
   }
 }
