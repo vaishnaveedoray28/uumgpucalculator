@@ -69,12 +69,12 @@ class _GPAHomeState extends State<GPAHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 255, 253, 226),
 
       appBar: AppBar(
         title: Text('UUM GPU Calculator', 
         style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.yellowAccent)),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 90, 29, 29),
         centerTitle: true,
       ),
 
