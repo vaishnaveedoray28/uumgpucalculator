@@ -53,6 +53,18 @@ class _GPAHomeState extends State<GPAHome> {
       }
     });
   }
+
+  void dispose() {
+
+    _audioPlayer.dispose();
+    for (var controller in gradeControllers) {
+      controller.dispose();
+    }
+    for (var controller in creditControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -72,6 +84,20 @@ class _GPAHomeState extends State<GPAHome> {
           child: Column(
             children: [
               const SizedBox(height: 20),
+
+              Image.asset('assets/images/logo.png', height: 100),
+              
+              const SizedBox(height: 10),
+
+              IconButton(
+                icon: const Icon(Icons.music_note_rounded, color: Colors.teal, size: 30), 
+                onPressed: () {
+                  _audioPlayer.play(AssetSource('audio/lofii.wav'));
+                },
+              ),
+              const Text("Music On", style: TextStyle(fontSize: 12, color: Colors.teal)),
+              
+              const SizedBox(height: 10),
 
               Text(
                 "Dynamic Performance Tracker",
@@ -131,14 +157,67 @@ class _GPAHomeState extends State<GPAHome> {
                 "Status: $status",
                 style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
               ),
-
             ]
           )
         )
       )
     );
   }
+
+Widget _buildSubjectRow(String label, TextEditingController gController, TextEditingController cController) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        ),
+        
+        Expanded(
+          flex: 2,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.black),
+            ),
+            child: TextField(
+              controller: gController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: 'Grade',
+                contentPadding: EdgeInsets.all(10),
+                border: InputBorder.none, 
+              ),
+            ),
+          ),
+        ),
+        
+        const SizedBox(width: 10),
+
+        Expanded(
+          flex: 1,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.black), 
+            ),
+            child: TextField(
+              controller: cController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: 'Credit',
+                contentPadding: EdgeInsets.all(10),
+                border: InputBorder.none, 
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
+
 
 
 
