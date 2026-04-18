@@ -11,8 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'UUM GPU Calculator',
       theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),  
         
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const GPAHome(),
     );
   }
+}
