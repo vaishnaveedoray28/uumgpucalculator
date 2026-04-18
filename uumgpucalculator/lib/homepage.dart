@@ -57,24 +57,13 @@ class _GPAHomeState extends State<GPAHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
-        title: Text('UUM GPU Calculator', style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w600),),
+        title: Text('UUM GPU Calculator', 
+        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.yellowAccent)),
+        backgroundColor: Colors.deepPurple,
         centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Welcome to UUM GPU Calculator', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),),
-            const SizedBox(height: 20,),
-            ElevatedButton(
-              onPressed: () async {
-                await _audioPlayer.play(AssetSource('audio/welcome.mp3'));
-              }, 
-              child: Text('Play Welcome Audio', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500),),
-            ),
-          ],
-        ),
       ),
     );
   }
