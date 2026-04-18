@@ -10,7 +10,22 @@ class GPAHome extends StatefulWidget {
 }
 
 class _GPAHomeState extends State<GPAHome> {
-  final player = AudioPlayer();
+
+  List<TextEditingController> gradeControllers = [TextEditingController()];
+  List<TextEditingController> creditControllers = [TextEditingController()];
+  
+  double totalGPA = 0.0;
+  String status = "Add subjects to begin";
+
+  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  void _addNewSubject() {
+    setState(() {
+      gradeControllers.add(TextEditingController());
+      creditControllers.add(TextEditingController());
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +41,7 @@ class _GPAHomeState extends State<GPAHome> {
             const SizedBox(height: 20,),
             ElevatedButton(
               onPressed: () async {
-                await player.play(AssetSource('audio/welcome.mp3'));
+                await _audioPlayer.play(AssetSource('audio/welcome.mp3'));
               }, 
               child: Text('Play Welcome Audio', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500),),
             ),
