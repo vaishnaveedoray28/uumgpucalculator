@@ -81,6 +81,44 @@ class _GPAHomeState extends State<GPAHome> {
                   color: Colors.black, 
                 ),
               ),
+
+              const Divider(height: 60),
+
+              // INPUT 
+              for (int i = 0; i < gradeControllers.length; i++)
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: _buildSubjectRow(
+                    "Subject ${i + 1}" ,
+                    gradeControllers[i], 
+                    creditControllers[i],
+                  ),
+                ),
+
+              const SizedBox(height: 20),
+
+              ElevatedButton(
+                onPressed: _addNewSubject,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: const Color.fromARGB(255, 146, 87, 87),
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                ),
+                child: const Text('Add Another Subject'),
+              ),
+
+              const SizedBox(height: 20),
+              
+              ElevatedButton(
+                onPressed: calculateTotalGPA,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[700],
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                ),
+                child: const Text('Calculate GPA'),
+              ),
+              
             ]
           )
         )
